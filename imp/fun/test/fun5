@@ -1,0 +1,9 @@
+int x; 
+int y; 
+int r; 
+x:=3; 
+y:=2; 
+r:=0; 
+while 1<=y do 
+    ( r:=r+x; 
+    y:=y-1 )

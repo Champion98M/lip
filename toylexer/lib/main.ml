@@ -24,4 +24,14 @@ let string_of_frequencies fl =
   List.fold_left (fun s (t,n) -> s ^ ((string_of_token t) ^ " -> " ^ string_of_int n ^ "\n")) "" fl
 
 (* frequency : int -> 'a list -> ('a * int) list *)
-let frequency _ _ = failwith("TODO")
+let frequency n tl = 
+  let rec freq = function
+    | [] -> []
+    | t::_l -> (t, List.length (List.filter (fun x -> x=t) tl))::freq (List.filter (fun x -> x<>t) _l) in 
+  let rec extract n l = match n, l with
+    | 0,_ | _,[] -> []
+    | n,hd::tl -> hd::extract (n-1) tl in
+  extract n (List.sort (fun (_,a) (_,b) -> b-a) (freq tl));;
+
+
+

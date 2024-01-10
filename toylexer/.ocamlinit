@@ -1,0 +1,2 @@
+open Toylexer.Token;;
+open Toylexer.Main;;
